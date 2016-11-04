@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2016-11-02T17:37:35</DateModified>
+  <DateModified>2016-11-04T16:44:37</DateModified>
   <ModuleName>Procesador6</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>C:/Users/Daniela Gomez/Desktop/Procesador 06/Procesado6/iseconfig/Procesador6.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Users/Daniela Gomez/Desktop/Procesador 06/Procesado6\</ImplementationReportsDirectory>
+  <SavedFilePath>C:/Users/utp.CRIE/Downloads/PortableGit-2.10.2-64-bit.7z/Arquitectura/Procesador 6/Procesado6/iseconfig/Procesador6.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/Users/utp.CRIE/Downloads/PortableGit-2.10.2-64-bit.7z/Arquitectura/Procesador 6/Procesado6\</ImplementationReportsDirectory>
   <DateInitialized>2016-11-02T17:36:22</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

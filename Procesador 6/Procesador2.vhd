@@ -21,7 +21,7 @@ COMPONENT ALU
           ALUResult : out  STD_LOGIC_VECTOR (31 downto 0)
 		);
 	END COMPONENT;
-	
+	--comit
 COMPONENT PSR
 	Port ( 
 	  rst : in  STD_LOGIC;
