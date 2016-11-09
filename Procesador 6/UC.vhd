@@ -36,7 +36,7 @@ begin
 						rfdest <= '0';
 						wrEnMem <= '0';
 						ALUOP <= "111111";
-					end if;
+					--end if;
 						
 					-- NOTA: B Never ????
 					
@@ -74,7 +74,7 @@ begin
 							ALUOP <= "111111";
 						end if;
 							
-					when "1001" => -- B Greather
+					when "1010" => -- B Greather
 						if (not(icc(2) or (icc(3) xor icc(1))) = '1') then --
 							pcSource <= "10";
 							wrEnRF <= '0'; 
@@ -92,7 +92,7 @@ begin
 						end if;
 					
 					when "0010" => -- B less or equal
-						if (icc(2) or (icc(3) xor icc(1)) = '1') then -- 
+						if ((icc(2) or (icc(3) xor icc(1))) = '1') then -- 
 							pcSource <= "10";
 							wrEnRF <= '0'; 
 							rfsource <= "00"; -- 
@@ -126,7 +126,7 @@ begin
 						end if;
 							
 					when "0011" => -- B less
-						if (icc(3) xor icc(1) = '1') then -- 
+						if ((icc(3) xor icc(1)) = '1') then -- 
 							pcSource <= "10";
 							wrEnRF <= '0'; 
 							rfsource <= "00"; -- 
@@ -160,7 +160,7 @@ begin
 						end if;
 				
 					when "0100" => -- B less or equal unsigned
-						if (icc(0) or icc(2) = '1') then -- 
+						if ((icc(0) or icc(2)) = '1') then -- 
 							pcSource <= "10";
 							wrEnRF <= '0'; 
 							rfsource <= "00"; -- 
@@ -177,7 +177,7 @@ begin
 						end if;
 					
 					when "1101" => -- B on carry clear
-						if (not(0) = '1') then -- 
+						if (not(icc(0)) = '1') then -- 
 							pcSource <= "10";
 							wrEnRF <= '0'; 
 							rfsource <= "00"; -- 
@@ -282,68 +282,230 @@ begin
 							pcSource <= "00";
 							wrEnRF <= '0';
 							rfsource <= "00";
-							rfsest <= '0';
+							rfdest <= '0';
 							wrEnMem <= '0';
 							ALUOP <= "111111"; 
 					end case;
 				end if;
 			end if;
-		end if;
 					
 		------LOAD and STORE
+		if(op = "11")then
+			if(op3 = "000000")then --Load
+				pcSource <= "00";
+				wrEnRF <= '1';
+				rfsource <= "00";
+				rfdest <= '0';
+				wrEnMem <= '0';
+				ALUOP <= "000000";
+			end if;
+			if(op3 = "000100")then --Store
+				pcSource <= "11";
+				wrEnRF <= '0';
+				rfsource <= "00";
+				rfdest <= '0';
+				wrEnMem <= '0';
+				ALUOP <= "000000";
+			end if;
+		end if;
 		
 		------Sethi
+		if(op = "00" and op2 = "100")then
+			pcSource <= "11";
+			wrEnRF <= '0'; 
+			rfsource <= "01";
+			rfdest <= '0';
+			wrEnMem <= '0'; 
+			ALUOP <= "111111";
+		end if;
 		
 		------Call
+		if(op = "01")then
+			pcSource <= "01"; 
+			wrEnRF <= '1'; 
+			rfsource <= "10"; 
+			rfdest <= '1'; 
+			wrEnMem <= '0'; 
+			ALUOP <= "111111"; 	
+		end if;
 		
 		--- Modificar los otros
 		if(op = "10")then
 			case(op3) is
 				when "000001" => --AND
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "000000";
 				when "000101" => --ANDn
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "000001";
 				when "000010" => --OR
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "000010";
 				when "000110" => --ORN
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "000011";
 				when "000011" =>  --XOR
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "000100";
 				when "000111" => --XNOR
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "000101";
 				when "000000" => --ADD
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "000110";		
 				when "000100" => --SUB
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "000111";
 				when "010000" => --ADDcc
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "001000";
 				when "011000" => --ADDXcc
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "001001";
 				when "010100" => --SUBcc
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "001010";
 				when "011100" => --SUBXcc
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "001011";
 				when "010001" => --ANDcc
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "001100";
 				when "010101" => --ANDncc
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "001101";
 				when "010010" => --ORcc
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "001110";
 				when "010110" => --ORncc
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "001111";
 				when "010011" => --XORcc
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "010000";
 				when "010111" => --XNORcc
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "010001";
 				when "001000" => --ADDx
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "010010";
 				when "001100" => --SUBx
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "010011";
 				when "100101" => --SLL
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "010100";
 				when "100110" => --SRL
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "010101";
 				when "111100" => --SAVE
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfsource <= "01";
+					rfdest <= '0';
+					wrEnMem <= '0';
+					ALUOP <= "000110";
+				when "111101"=> --Restore
+					pcSource <= "11";
+					wrEnRF <= '1';
+					rfSource <= "01";
+					rfDest <= '0';
+					wrEnMem <= '0';
+					ALUOP <= "000110";
+				when "111000"=> --Jump and Link
+					pcSource <= "00";
+					wrEnRF <= '1';
+					rfSource <= "10";
+					rfDest <= '0';
+					wrEnMem <= '0';
 					ALUOP <= "000110";
 				when others => 
 					ALUOP <= "111111";
