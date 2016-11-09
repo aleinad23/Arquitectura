@@ -1,0 +1,6 @@
+AR muxalu behavioral "C:/Users/Daniela Gomez/Desktop/Procesador 04/Procesado4/MuxAlu.vhd" sub00/vhpl01 1478123849
+EN muxalu NULL "C:/Users/Daniela Gomez/Desktop/Procesador 04/Procesado4/MuxAlu.vhd" sub00/vhpl00 1478123848
+EN rf NULL "C:/Users/Daniela Gomez/Desktop/Procesador 04/RF.vhd" sub00/vhpl04 1478125263
+AR uc behavioral "C:/Users/Daniela Gomez/Desktop/Procesador 04/UC.vhd" sub00/vhpl03 1478124884
+EN uc NULL "C:/Users/Daniela Gomez/Desktop/Procesador 04/UC.vhd" sub00/vhpl02 1478124883
+AR rf behavioral "C:/Users/Daniela Gomez/Desktop/Procesador 04/RF.vhd" sub00/vhpl05 1478125264
