@@ -21,7 +21,7 @@ end UC;
 architecture Behavioral of UC is
 
 begin
-  ------UC Procesador6
+  ------UC Procesador6 Probando comandos
 	process(op,op3)
 	begin
 
